@@ -125,7 +125,7 @@ function App() {
 						className='flex-3 p-2 placeholder: text-gray-600 bg-white   rounded-lg focus:outline-none focus:border-2 focus:border-blue-700 focus:text-black'
 					/>
 					<button
-						className=' p-2 flex-1 text-white bg-blue-700 cursor-pointer rounded-md hover:bg-green-500 hover:text-black  transition'
+						className=' p-2 flex-1 text-white bg-blue-700 cursor-pointer rounded-md hover:bg-blue-400 hover:text-black  transition'
 						onClick={addOrUpdateTodo}
 					>
 						{editId ? "Update" : "Add"}

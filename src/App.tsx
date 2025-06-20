@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useEffect } from "react";
 import TodoColumns from "./components/TodoColumns";
 import {
 	DndContext,
@@ -17,8 +18,14 @@ type Todos = {
 };
 
 function App() {
+	const getInitialTodos = (): Todos[] => {
+		const stored = localStorage.getItem("todos");
+		return stored ? JSON.parse(stored) : [];
+	};
+
 	const [input, setInput] = useState<string>("");
-	const [todos, setTodos] = useState<Todos[]>([]);
+	const [todos, setTodos] = useState<Todos[]>(getInitialTodos);
+
 	const [editId, setEditId] = useState<number | null>(null);
 
 	const columns = ["To Do", "In Progress", "Done"];
@@ -98,6 +105,9 @@ function App() {
 			);
 		}
 	};
+	useEffect(() => {
+	localStorage.setItem("todos", JSON.stringify(todos));
+}, [todos]);
 
 	return (
 		<div className='bg-gray-900 min-h-screen p-4'>
